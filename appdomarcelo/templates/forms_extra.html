@@ -1,0 +1,34 @@
+<h1>Atualizar jogos</h1>
+
+<!-- Adicionando os links de autenticação no topo da página -->
+<div class="auth-links">
+    {% if user.is_authenticated %}
+        Olá, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Registrar</a>
+    {% endif %}
+</div>
+
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <label>Title:</label>
+    <input name="Title" value="{{ obj.title }}">
+  </div>
+  
+  <div>
+    <label>How often:</label>
+    <select name="how_often">
+        <option value="Never" {% if obj.how_often == "Never" %} selected {% endif %}>Never</option>
+        <option value="Sometimes" {% if obj.how_often == "Sometimes" %} selected {% endif %}>Sometimes</option>
+        <option value="Always" {% if obj.how_often == "Always" %} selected {% endif %}>Always</option>
+    </select>
+  </div>
+  
+  <div>
+    <label>Enjoyability:</label>
+    <input type="number" name="Enjoyability" value="{{ obj.enjoyability }}">
+  </div>
+
+  <input type="submit" value="Atualizar">
+</form>

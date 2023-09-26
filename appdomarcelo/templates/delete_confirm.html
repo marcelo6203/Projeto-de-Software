@@ -1,0 +1,7 @@
+<h2>Deletion Confirmation</h2>
+<p>Tem certeza que deseja deletar o jogo "{{ game.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'home' %}">Cancelar</a>
+</form>

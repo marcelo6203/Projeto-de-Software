@@ -1,0 +1,23 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+html, body { margin: 0; padding: 0; }
+
+.blue-center{
+  display: flex;
+  justify-content: center;
+  
+}
+.head-center{
+  display: flex;
+  justify-content: flex-end;
+}
+.fundo{
+  background-image:url("https://img.freepik.com/vetores-gratis/fundo-de-formas-abstratas-brancas_79603-1362.jpg?w=1060&t=st=1692728709~exp=1692729309~hmac=2685403d2c6c0ee7f7b7b818873b1cc3b08871e5068e79c68a67ceba6178adb9");
+  background-size:cover;
+}
+h1,h2,h3,h4,h5,p,li{
+  font-family: 'Montserrat', sans-serif;
+}

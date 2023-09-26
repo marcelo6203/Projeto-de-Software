@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Marcelo Bessa Delayti Machado</title>
+    <link rel="stylesheet" type='text/css' href="{% static 'style2.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="fundo">
+
+
+    <div class="auth-links">
+        {% if user.is_authenticated %}
+            Olá, {{ user.username }}! <a href="{% url 'user_logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Registrar</a>
+        {% endif %}
+    </div>
+
+    <div class="blue-center">
+        <h1><b>Marcelo Bessa Delayti Machado</b></h1>
+    </div>
+    <h4>Neste site, há um <i>"duelo"</i> entre dois personagens, alguns links interessantes e também uma lista de meus jogos preferidos</h4>
+
+    <div class="blue-center"><h2><strong>Batalha Mortal do dia</strong></h2></div>
+
+    <div class="blue-center">
+        <div><img src="{% static 'img/NicePng_mlg-png_9749.png' %}" width="200"></div>
+        <div><img src="{% static 'img/Street_Fighter_VS_logo.png' %}" width="150"></div>
+        <div><img style="transform: scaleX(-1);" src="{% static 'img/Shedew-1.png' %}" width="205"></div>
+    </div>
+
+    <div class="blue-center">
+        <table border="1">
+            <tr>
+                <td>Nome</td>
+                <td>Velocidade</td>
+                <td>Força</td>
+            </tr>
+            <tr>
+                <td>Sanic</td>
+                <td>99</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Shedew</td>
+                <td>10</td>
+                <td>75</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <div class="head-center">
+        <p>VENCEDOR: SANIC!!!</p>
+    </div>
+
+    <div><h2>Links interessantes</h2></div>
+
+    <p><strong>Para outros tipos de texto, visitar <i><b><a href="https://www.w3schools.com/html/html_formatting.asp" target="_blank" rel="noopener noreferrer">Html Text Formatting Tags</a></b></i></strong></p>
+    <p><strong>Para manipulação de imagem, visitar <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer">Flexbox</a></strong></p>
+    <p><strong>Para treinar manipulação de imagem através do CSS, visitar <a href="https://flexboxfroggy.com/" target="_blank" rel="noopener noreferrer">Flexbox froggy</a></strong></p>
+    <p><strong>Pack de manipulação do CSS <a href="https://getbootstrap.com/"target="_blank" rel="noopener noreferrer">Bootstrap</a> ou <a href="https://m3.material.io/"target="_blank" rel="noopener noreferrer">Material Design</a> e também <a href="https://tailwindcss.com/"target="_blank" rel="noopener noreferrer">Tailwind CSS</a></strong></p>
+
+    <br>
+    <p><u>Saindo agora da zona de links, vejamos uma lista de grandes jogos</u>:</p>
+    <h2>Meus jogos favoritos</h2>
+    
+    <ol>
+        {% for jogo in jogos %}
+            <li>
+                {{ jogo.title }}
+                <a href="/jogos/update/{{ jogo.id }}">Atualizar</a> | 
+                <a href="/jogos/delete/{{ jogo.id }}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+    <a href="/jogos">Adicionar novo jogo</a>
+    <h3>outros bons jogos</h3>
+    <ul>
+        {% for rejogo in rejogos %}
+            <li>
+                {{ rejogo.title }}
+                <a href="/extras/update/{{ rejogo.id }}">Atualizar</a> | 
+                <a href="/extras/delete/{{ rejogo.id }}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/extras">Adicionar novo jogo</a>
+    <br>
+</div>
+</body>
+</html>
